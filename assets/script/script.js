@@ -1,3 +1,6 @@
+// Set the username and password in localStorage
+localStorage.setItem("username", "user123");
+localStorage.setItem("password", "12345");
 // Function to handle form submission
 document
   .getElementById("login-form")
