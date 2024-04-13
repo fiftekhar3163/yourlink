@@ -31,45 +31,80 @@
     <link rel="stylesheet" href="./assets/style/index.css" type="text/css" />
   </head>
   <body>
-    <header>
-      <h1>YourLink</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">My Profile</a></li>
-          <li><a href="#">Connections</a></li>
-          <li><a href="#">Jobs</a></li>
-          <li><a href="#">Messages</a></li>
-        </ul>
+    <header class="flex">
+      <div class="flex justify-between align-center w-50">
+        <h1>YourLink</h1>
+        <nav class="">
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Messages</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="searchbar-userprofile">
         <div class="search-bar">
           <input type="text" placeholder="Search" />
           <button><i class="fas fa-search"></i></button>
         </div>
         <div class="user-profile">
-          <img src="./assets/img/profile-pic.jpg" alt="User Profile Picture" />
+          <img
+            class="user-profile-picture"
+            src="./assets/img/photo- Md Fahim Iftekhar.jpg"
+            alt="User Profile Picture"
+          />
           <span>John Doe</span>
         </div>
-      </nav>
+      </div>
     </header>
+    <main class="flex-colum">
+      <div class="main-content">
+        <div class="profile">
+          <!-- Your profile -->
+        </div>
 
-    <div class="main-content">
-      <div class="profile">
-        <!-- Your profile -->
-      </div>
+        <div class="connections flex-row">
+          <section class="post-section">
+            <form id="postForm">
+              <textarea
+                class="textarea"
+                id="postText"
+                placeholder="What's on your mind?"
+              ></textarea>
+              <input
+                type="file"
+                id="imageUpload"
+                accept="image/*"
+                style="display: none"
+              />
+              <div class="flex justify-between">
+                <label for="imageUpload" id="imageUploadLabel">
+                  <i class="fa-solid fa-image"></i
+                ></label>
+                <span id="selectedFileName"></span>
+                <button class="button" type="submit" id="postButton">
+                  Post
+                </button>
+              </div>
+            </form>
+          </section>
+          <div id="posts"></div>
+        </div>
 
-      <div class="connections">
-        <!-- Other users' profiles -->
+        <div class="people-you-may-know">
+          <!-- People you may know -->
+          <h3>People you may know</h3>
+          <div class="user-list"></div>
+        </div>
       </div>
-
-      <div class="people-you-may-know">
-        <!-- People you may know -->
-      </div>
-    </div>
+    </main>
 
     <footer>
       <!-- Footer content -->
     </footer>
 
+    <script src="./assets/script/class.js" type="module"></script>
+    <script src="./assets/script/posts.js" type="module"></script>
     <script src="./assets/script/script.js" type="module"></script>
   </body>
 </html>

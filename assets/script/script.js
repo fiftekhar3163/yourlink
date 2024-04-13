@@ -1,9 +1,10 @@
+const connectionsContainer = document.querySelector(".user-list");
 // Function to fetch user data from the Random User API
 function fetchUserData() {
-  fetch("https://randomuser.me/api/?results=10") // Fetch data for 10 users
+  connectionsContainer.innerHTML = "<p>Loading...</p>";
+  fetch("https://randomuser.me/api/?nat=CA&results=10&seed=keep-same") // Fetch data for 10 users
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.results);
       // Extract necessary information for each user
       const users = data.results.map((user) => ({
         picture: user.picture.medium,
@@ -19,29 +20,32 @@ function fetchUserData() {
 
 // Function to display user profiles on the home page
 function displayUserProfiles(users) {
-  const connectionsContainer = document.querySelector(".connections");
-
   // Clear previous content
   connectionsContainer.innerHTML = "";
 
   // Create HTML elements for each user profile and append them to the container
   users.forEach((user) => {
     const profileDiv = document.createElement("div");
-    profileDiv.classList.add("profile");
+    profileDiv.classList.add("user-item");
 
     const img = document.createElement("img");
     img.src = user.picture;
     img.alt = user.name;
 
     const nameParagraph = document.createElement("p");
+    nameParagraph.classList.add("user-name");
     nameParagraph.textContent = user.name;
 
     const cityParagraph = document.createElement("p");
     cityParagraph.textContent = user.city;
 
+    const nameCityWrapper = document.createElement("div");
+    nameCityWrapper.classList.add("name-city-wrapper");
+    nameCityWrapper.appendChild(nameParagraph);
+    nameCityWrapper.appendChild(cityParagraph);
+
     profileDiv.appendChild(img);
-    profileDiv.appendChild(nameParagraph);
-    profileDiv.appendChild(cityParagraph);
+    profileDiv.appendChild(nameCityWrapper);
 
     connectionsContainer.appendChild(profileDiv);
   });
